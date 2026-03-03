@@ -4,13 +4,14 @@ import { LoginPage } from '../pages/login.page';
 test('loginsuccess', async ({ page }) => {
 
    const login = new LoginPage(page);
-   await login.navigation();
-   await login.enterusername('admin');
-   await page.waitForTimeout(500);
+  
+     await login.defaultlogin(
+    process.env.USERNAME as string,
+    process.env.PASSWORD as string
+  );
 
-   await login.enterpassword('admin@1200');
-   await page.waitForTimeout(500);
-   await login.passwordvisibility();
+  
+  
 
    await login.submitbutton();
    const toastLocator = await page.locator('#toast-container');

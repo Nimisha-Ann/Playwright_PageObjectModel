@@ -7,8 +7,11 @@ test('companypage', async ({ page }) => {
     const login = new LoginPage(page);
     const company = new CompanyPage(page);
 
-    await login.defaultlogin('admin', 'admin@1200');
-
+ 
+  await login.defaultlogin(
+    process.env.USERNAME as string,
+    process.env.PASSWORD as string
+  );
 
 
     await page.getByRole('button', { name: 'MASTERS' }).click();
